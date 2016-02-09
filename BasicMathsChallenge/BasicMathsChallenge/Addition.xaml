@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="BasicMathsChallenge.Addition"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BasicMathsChallenge"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="Maths Challenge" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Addition" Margin="0,-6.5,-0.167,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,0" >
+
+
+           
+            <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Center" Margin="122,423,131,21" Background="Red" Click="btnStart_Click"/>
+            <TextBox x:Name="tbx1" HorizontalAlignment="Left" Margin="51,22,0,445" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
+            <TextBox x:Name="tbx2" HorizontalAlignment="Left" Margin="204,22,0,445" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
+            <TextBlock x:Name="textSign" HorizontalAlignment="Left" Margin="162,18,0,0" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" FontSize="32" Width="21"/>
+            <TextBlock x:Name="textSign_Copy" HorizontalAlignment="Left" Margin="162,91,0,0" TextWrapping="Wrap" Text="=" VerticalAlignment="Top" FontSize="32" Width="21"/>
+            <TextBox x:Name="tbxAns1" HorizontalAlignment="Left" Margin="51,165,0,302" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
+            <TextBox x:Name="tbxAns2" HorizontalAlignment="Left" Margin="204,165,0,302" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
+            <TextBox x:Name="tbxAns3" HorizontalAlignment="Left" Margin="51,234,0,233" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
+            <TextBox x:Name="tbxAns4" HorizontalAlignment="Left" Margin="204,234,0,233" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
+
+
+        </Grid>
+
+    </Grid>
+</Page>
