@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberWang", "NumberWang\NumberWang.csproj", "{161BD8F3-38FC-4D92-B74D-92CFC00AB711}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberWangApp", "App1\NumberWangApp.csproj", "{C61DEFC4-71F5-423A-A81A-EC7F2A0C5427}"
 EndProject
 Global
@@ -17,18 +15,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Debug|ARM.Build.0 = Debug|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Debug|x86.Build.0 = Debug|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Release|Any CPU.Build.0 = Release|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Release|ARM.ActiveCfg = Release|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Release|ARM.Build.0 = Release|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Release|x86.ActiveCfg = Release|Any CPU
-		{161BD8F3-38FC-4D92-B74D-92CFC00AB711}.Release|x86.Build.0 = Release|Any CPU
 		{C61DEFC4-71F5-423A-A81A-EC7F2A0C5427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C61DEFC4-71F5-423A-A81A-EC7F2A0C5427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C61DEFC4-71F5-423A-A81A-EC7F2A0C5427}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

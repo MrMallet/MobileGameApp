@@ -1,4 +1,4 @@
-﻿using App1.Common;
+﻿using NumberWangApp.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace App1
+namespace NumberWangApp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -27,6 +27,8 @@ namespace App1
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private string op;
+
 
         public GamePage()
         {
@@ -67,6 +69,7 @@ namespace App1
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+
         }
 
         /// <summary>
@@ -98,7 +101,10 @@ namespace App1
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            //this.navigationHelper.OnNavigatedTo(e);
+            string op = e.ToString();
+            gameHeader.Text = op.ToString();
+            //fillGame(op);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -110,7 +116,7 @@ namespace App1
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            string op = "Addition";
+            
             fillGame(op);
         }
 
@@ -125,8 +131,8 @@ namespace App1
             Random rnd = new Random();
             int num1 = rnd.Next(1, 13);
             int num2 = rnd.Next(1, 13);
-            tbx1.Text = num1.ToString();
-            tbx2.Text = num2.ToString();
+            tbk1.Text = num1.ToString();
+            tbk2.Text = num2.ToString();
 
             //get larger of the two integers = rangeNum
             //take result and whatever the operator just make the answer a random number between (result-rangeNum) and (result + rangeNum)
@@ -136,17 +142,16 @@ namespace App1
                 rangeNum = num1;
             else rangeNum = num2;
 
-            
-
-
             int result;
             //not so random number generator generates the answers 
             if (op == "Addition")
             {
+                tbktextSign.Text = "+";
                 result = num1 + num2;
                 answers(result, rangeNum);
             }
-            else if (op == "Subtraction") {
+            else if (op == "Subtraction")
+            {
                 result = num1 - num2;
                 answers(result, rangeNum);
             }
@@ -155,7 +160,7 @@ namespace App1
                 result = num1 * num2;
                 answers(result, rangeNum);
             }
-                
+
             else if (op == "Division")
             {
                 result = num1 / num2;
@@ -164,17 +169,23 @@ namespace App1
             //how to pass an operator as a parameter. 
             //scrub that, go with a switch statment. more accurate alternate options for the user to choose from. 
 
-
         }
 
         private void answers(int result, int rangeNum)
         {
             Random rnd = new Random();
-            tbxAns1.Text = rnd.Next((result - rangeNum), (result + rangeNum)).ToString();
-            tbxAns2.Text = rnd.Next((result - rangeNum), (result + rangeNum)).ToString();
-            tbxAns3.Text = rnd.Next((result - rangeNum), (result + rangeNum)).ToString();
-            tbxAns4.Text = rnd.Next((result - rangeNum), (result + rangeNum)).ToString();
+            btnAns1.Content = rangeNum; 
+//                = rnd.Next((result - rangeNum), (result + rangeNum)).ToString();
+
+            //create a for loop that fills an array with the answer and three non repeating randoms
+
+            //shuffle them and assign them to the answer buttons
+
+            //think about how to check the answer against the chosen block
+
+
 
         }
+
     }
 }
