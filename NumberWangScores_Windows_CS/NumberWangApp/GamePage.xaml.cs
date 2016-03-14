@@ -28,7 +28,13 @@ namespace NumberWangApp
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private string op;
-
+        private int rangeNum; 
+        private int i =0;
+        private int[] answers = new int[4];
+        private int result;
+        private int gameScore = 0;
+        private int gameCounter = 1;
+        private int gameLimit = 20;
 
         public GamePage()
         {
@@ -102,9 +108,9 @@ namespace NumberWangApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //this.navigationHelper.OnNavigatedTo(e);
-            string op = e.ToString();
+            op = e.Parameter as string;
             gameHeader.Text = op.ToString();
-            //fillGame(op);
+            fillGame(op);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -115,10 +121,48 @@ namespace NumberWangApp
         #endregion
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {    
             fillGame(op);
         }
+
+        //get rangeNum
+
+        private int getRangeNum(int num1, int num2)
+        {
+            int rangeNum;
+            if (num1 > num2)
+                rangeNum = num1;
+            else rangeNum = num2;
+            return rangeNum;
+        }
+
+        public int checkArr(int[] answers, int checknum)
+        {
+            int checkednum = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (answers[i] == checknum)
+                {
+                    checknum++;
+                    checkednum = checkArr(answers, checknum);
+                }
+                else checkednum = checknum;
+            }
+            return checkednum;
+        }
+       
+        //private bool checkArr(int[] answers, int checkNum)
+        //{
+        //    bool truth = false ;
+        //    for (int i = 0; i < 4; i++) {
+        //        if (answers[i] == checkNum)
+        //        {
+        //            truth = true;
+        //        }         
+        //    }
+        //    return truth; 
+        //}
+
 
         private void fillGame(string op)
         {
@@ -130,62 +174,126 @@ namespace NumberWangApp
 
             Random rnd = new Random();
             int num1 = rnd.Next(1, 13);
-            int num2 = rnd.Next(1, 13);
+            int num2 = rnd.Next(2, 13);// could sort both numbers so as to put large and small in order using num1 as rangeNum as well. 
             tbk1.Text = num1.ToString();
             tbk2.Text = num2.ToString();
 
             //get larger of the two integers = rangeNum
             //take result and whatever the operator just make the answer a random number between (result-rangeNum) and (result + rangeNum)
             //put them in an array and spit them out randomly to answertextbox buttons
-            int rangeNum;
-            if (num1 > num2)
-                rangeNum = num1;
-            else rangeNum = num2;
+            rangeNum=getRangeNum(num1, num2);
 
-            int result;
+            
             //not so random number generator generates the answers 
-            if (op == "Addition")
+            if (op.Equals("Addition"))
             {
+                
                 tbktextSign.Text = "+";
                 result = num1 + num2;
-                answers(result, rangeNum);
+                getAnswers(result, rangeNum);
+                
             }
             else if (op == "Subtraction")
             {
+                tbktextSign.Text = "-";
                 result = num1 - num2;
-                answers(result, rangeNum);
+                getAnswers(result, rangeNum);
             }
             else if (op == "Multiplication")
             {
+                tbktextSign.Text = "x";
                 result = num1 * num2;
-                answers(result, rangeNum);
+                getAnswers(result, rangeNum);
             }
 
             else if (op == "Division")
             {
+                tbktextSign.Text = "/";
+                //will need to make sure of have a higher number divisble by another. might need to use a 2d array
                 result = num1 / num2;
-                answers(result, rangeNum);
+                getAnswers(result, rangeNum);
             }
             //how to pass an operator as a parameter. 
             //scrub that, go with a switch statment. more accurate alternate options for the user to choose from. 
 
         }
 
-        private void answers(int result, int rangeNum)
+
+        private void getAnswers(int result, int rangeNum)
         {
             Random rnd = new Random();
-            btnAns1.Content = rangeNum; 
-//                = rnd.Next((result - rangeNum), (result + rangeNum)).ToString();
+            int lowNum = (result - rangeNum);
+            int highNum = (result + rangeNum);
+            //populate the array 
+            
 
+            // = rnd.Next((result - rangeNum), (result + rangeNum));
+            answers[0] = result;
             //create a for loop that fills an array with the answer and three non repeating randoms
+            for(int i = 1; i < 4; i++)
+            {
+                int checkNum = rnd.Next(lowNum, highNum);
+                int checkedNum = checkArr(answers, checkNum);
+                
+                answers[i] = checkedNum;
 
-            //shuffle them and assign them to the answer buttons
-
+            }
+            //shuffle them and assign them to the answer buttons knuths/ fischer-yates shuffle
+            for (int i = answers.Length- 1; i > 0; i--)
+            {
+                int index = rnd.Next(i + 1);
+                int a = answers[index];
+                answers[index] = answers[i];
+                answers[i] = a;
+            }
             //think about how to check the answer against the chosen block
-
-
+            btnAns1.Content = answers[0];
+            btnAns2.Content = answers[1];
+            btnAns3.Content = answers[2];
+            btnAns4.Content = answers[3];
 
         }
 
+        private void calculateScore(int arPos)
+        {
+            if (answers[arPos] == result)
+                gameScore++;
+            gameCounter++; 
+            tbkScore.Text = ("Score: " + gameScore);
+            tbkGameCounter.Text = (gameCounter + "/" + gameLimit);
+            if (gameCounter > gameLimit)
+                //Frame.Navigate(typeof(MainPage), ArgumentNullException);
+            Frame.Navigate(typeof(MainPage), gameScore);
+
+        }
+
+        private void btnAns1_Click(object sender, RoutedEventArgs e)
+        {
+            //get either the array value or the content string and compare it to result  
+            int arPos = 0;
+            calculateScore(arPos);
+            fillGame(op);
+        }
+
+        private void btnAns2_Click(object sender, RoutedEventArgs e)
+        {
+            int arPos = 1;
+            calculateScore(arPos);
+            fillGame(op);
+        }
+
+        private void btnAns4_Click(object sender, RoutedEventArgs e)
+        {
+            int arPos = 3;
+            calculateScore(arPos);
+            fillGame(op);
+        }
+
+        private void btnAns3_Click(object sender, RoutedEventArgs e)
+        {
+            int arPos = 2;
+            calculateScore(arPos);
+            fillGame(op);
+        }
     }
 }

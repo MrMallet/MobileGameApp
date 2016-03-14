@@ -29,19 +29,20 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Center" Margin="122,423,131,21" Background="Red" Click="btnStart_Click"/>
-            <TextBlock x:Name="tbk1" HorizontalAlignment="Left" Margin="77,36,0,415" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Height="50" FontSize="45" />
-            <TextBlock x:Name="tbk2" HorizontalAlignment="Left" Margin="249,36,0,415" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Height="50" FontSize="45"/>
-            <TextBlock x:Name="tbktextSign" HorizontalAlignment="Left" Margin="162,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="32" Width="21"/>
-            <TextBlock x:Name="tbkEquals" HorizontalAlignment="Left" Margin="166,117,0,0" TextWrapping="Wrap" Text="=" VerticalAlignment="Top" FontSize="32" Width="21"/>
-            <!--<TextBox x:Name="tbxAns1" HorizontalAlignment="Left" Margin="51,165,0,302" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
-            <TextBox x:Name="tbxAns2" HorizontalAlignment="Left" Margin="204,165,0,302" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
-            <TextBox x:Name="tbxAns3" HorizontalAlignment="Left" Margin="51,234,0,233" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>
-            <TextBox x:Name="tbxAns4" HorizontalAlignment="Left" Margin="204,234,0,233" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Height="34"/>-->
-            <Button x:Name="btnAns1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,201,0,0"/>
-            <Button x:Name="btnAns2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="208,201,0,0"/>
-            <Button x:Name="btnAns3" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="208,275,0,0"/>
-            <Button x:Name="btnAns4" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,275,0,0"/>
+            <!--<Button x:Name="btnStart" Content="Start" HorizontalAlignment="Center" Margin="122,423,131,21" Background="Red" Click="btnStart_Click"/>-->
+            <TextBlock x:Name="tbkScore" HorizontalAlignment="Left" Margin="29,26,0,0" TextWrapping="Wrap" Text="Score = 20" VerticalAlignment="Top" Height="20" FontSize="20"/>
+            <TextBlock x:Name="tbkGameCounter" HorizontalAlignment="Left" Margin="232,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="20" FontSize="20"/>
+
+            <TextBlock x:Name="tbk1" HorizontalAlignment="Left" Margin="79,114,0,337" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Height="50" FontSize="45" />
+            <TextBlock x:Name="tbk2" HorizontalAlignment="Left" Margin="251,114,0,337" TextWrapping="Wrap" Text="0" VerticalAlignment="Center" Height="50" FontSize="45"/>
+            <TextBlock x:Name="tbktextSign" HorizontalAlignment="Left" Margin="164,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="50" Width="40"/>
+            <TextBlock x:Name="tbkEquals" HorizontalAlignment="Left" Margin="164,195,0,0" TextWrapping="Wrap" Text="=" VerticalAlignment="Top" FontSize="50" Width="40"/>
+
+            <Button x:Name="btnAns1" Content="" Background="Red" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,279,0,0" Height="55" FontSize="30" Click="btnAns1_Click"/>
+            <Button x:Name="btnAns2" Content="" Background="DarkBlue" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,279,0,0" Height="55" FontSize="30" Click="btnAns2_Click"/>
+            <Button x:Name="btnAns3" Content="" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,353,0,0" Height="55" FontSize="30" Click="btnAns3_Click"/>
+            <Button x:Name="btnAns4" Content="" Background="Purple" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,353,0,0" Height="55" FontSize="30" Click="btnAns4_Click"/>
+            
 
         </Grid>
     </Grid>
