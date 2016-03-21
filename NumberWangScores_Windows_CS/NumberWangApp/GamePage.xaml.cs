@@ -1,12 +1,14 @@
 ﻿using NumberWangApp.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.Phone.UI.Input;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -28,8 +30,8 @@ namespace NumberWangApp
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private string op;
-        private int rangeNum; 
-        private int i =0;
+        private int rangeNum;
+        private int i = 0;
         private int[] answers = new int[4];
         private int result;
         private int gameScore = 0;
@@ -43,8 +45,19 @@ namespace NumberWangApp
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            HardwareButtons.BackPressed += HarwareButtons_BackPressed;
         }
 
+        private void HarwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+
+            if (Frame.CanGoBack)
+            {
+                e.Handled = true;
+                Frame.GoBack();
+            }       
+        }
+    
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>
@@ -107,7 +120,7 @@ namespace NumberWangApp
         /// handlers that cannot cancel the navigation request.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //this.navigationHelper.OnNavigatedTo(e);
+            this.navigationHelper.OnNavigatedTo(e);
             op = e.Parameter as string;
             gameHeader.Text = op.ToString();
             fillGame(op);
@@ -115,14 +128,16 @@ namespace NumberWangApp
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            Debug.WriteLine("OnNavigatedFrom");
+            //Hub.Background = new SolidColorBrush(Colors.Red);
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
-        {    
-            fillGame(op);
+        {
+            this.Frame.Navigate(typeof(ScorePage));
         }
 
         //get rangeNum
@@ -174,7 +189,9 @@ namespace NumberWangApp
 
             Random rnd = new Random();
             int num1 = rnd.Next(1, 13);
-            int num2 = rnd.Next(2, 13);// could sort both numbers so as to put large and small in order using num1 as rangeNum as well. 
+            int num2 = rnd.Next(2, 13);
+            // could sort both numbers so as to put large and small in order using num1 as rangeNum as well. 
+
             tbk1.Text = num1.ToString();
             tbk2.Text = num2.ToString();
 
@@ -262,9 +279,18 @@ namespace NumberWangApp
             tbkScore.Text = ("Score: " + gameScore);
             tbkGameCounter.Text = (gameCounter + "/" + gameLimit);
             if (gameCounter > gameLimit)
+            {
                 //Frame.Navigate(typeof(MainPage), ArgumentNullException);
-            Frame.Navigate(typeof(MainPage), gameScore);
 
+                try
+                {
+                    this.Frame.Navigate(typeof(ScorePage), gameScore); 
+                }
+                catch (System.ArgumentNullException e)
+                {
+                    tbkEquals.Text = e.ToString();
+                }
+            }
         }
 
         private void btnAns1_Click(object sender, RoutedEventArgs e)

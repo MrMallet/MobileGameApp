@@ -29,7 +29,7 @@ namespace NumberWangScores
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://numberwangscores.azure-mobile.net/",
             "pXjhwNBmUyuIZxndOLzPCObuqcqIdR46"
-        );
+        );  
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

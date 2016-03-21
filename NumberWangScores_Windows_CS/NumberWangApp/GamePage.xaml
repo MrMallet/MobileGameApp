@@ -29,7 +29,7 @@
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <!--<Button x:Name="btnStart" Content="Start" HorizontalAlignment="Center" Margin="122,423,131,21" Background="Red" Click="btnStart_Click"/>-->
+            <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Center" Margin="122,423,131,21" Background="Red" Click="btnStart_Click"/>
             <TextBlock x:Name="tbkScore" HorizontalAlignment="Left" Margin="29,26,0,0" TextWrapping="Wrap" Text="Score = 20" VerticalAlignment="Top" Height="20" FontSize="20"/>
             <TextBlock x:Name="tbkGameCounter" HorizontalAlignment="Left" Margin="232,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="20" FontSize="20"/>
 

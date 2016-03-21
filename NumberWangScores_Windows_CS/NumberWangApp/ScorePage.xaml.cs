@@ -28,6 +28,10 @@ namespace NumberWangApp
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        private int gameScore;
+        private int bestScore;
+        private int runningTotal;
+
         public ScorePage()
         {
             this.InitializeComponent();
@@ -99,6 +103,9 @@ namespace NumberWangApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedTo(e);
+            gameScore = Convert.ToInt32(e.Parameter) ;
+            tbkLatestScore.Text = gameScore.ToString();
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

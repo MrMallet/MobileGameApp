@@ -23,12 +23,58 @@
 
         <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="page title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="BasicMaths" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Score" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Content should be placed within the following grid-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <TextBlock x:Name="tbkLatest" 
+                       HorizontalAlignment="Left" 
+                       TextWrapping="Wrap" 
+                       Text="Game Score : " 
+                       VerticalAlignment="Top" Height="47" Width="145"
+                       FontSize="24" Margin="40,0,0,0"
+                       />
+            <TextBlock x:Name="tbkLatestScore" 
+            	HorizontalAlignment="Left" 
+            	TextWrapping="Wrap" 
+            	Text="" 
+            	VerticalAlignment="Top" Height="47" Width="145"
+            	FontSize="24"
+                       Margin="190,0,0,0"
+                       />
+            <TextBlock x:Name="tbkTotal" 
+            	HorizontalAlignment="Left" 
+            	TextWrapping="Wrap" 
+            	Text="Total Score : " 
+            	VerticalAlignment="Top" Height="47" Width="145"
+            	FontSize="24" Margin="40,112,0,0"
+                       />
+            <TextBlock x:Name="tbkTotalScore" 
+            	HorizontalAlignment="Left" 
+            	TextWrapping="Wrap" 
+            	Text="" 
+            	VerticalAlignment="Top" Height="47" Width="145"
+            	FontSize="24"
+            	Margin="190,112,0,0"
+                       />
+            <TextBlock x:Name="tbkHigh" 
+            	HorizontalAlignment="Left" 
+            	TextWrapping="Wrap" 
+            	Text="High Score : " 
+            	VerticalAlignment="Top" Height="47" Width="145"
+            	FontSize="24" Margin="40,236,0,0"
+                       />
+            <TextBlock x:Name="tbkHighScore" 
+            	HorizontalAlignment="Left" 
+            	TextWrapping="Wrap" 
+            	Text="" 
+            	VerticalAlignment="Top" Height="47" Width="145"
+            	FontSize="24"
+            	Margin="190,236,0,0"
+                       />
+
 
         </Grid>
     </Grid>

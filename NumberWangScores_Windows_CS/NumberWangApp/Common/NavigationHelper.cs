@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -358,8 +359,11 @@ namespace NumberWangApp.Common
         /// property provides the group to be displayed.</param>
         public void OnNavigatedFrom(NavigationEventArgs e)
         {
+            Debug.WriteLine("OnNavigatedFrom.NavigationHelper");
             var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
+            Debug.WriteLine("OnNavigatedFrom.NavigationHelper + frameState" + frameState );
             var pageState = new Dictionary<String, Object>();
+            Debug.WriteLine("OnNavigatedFrom.NavigationHelper + pageState" + pageState);
             if (this.SaveState != null)
             {
                 this.SaveState(this, new SaveStateEventArgs(pageState));
